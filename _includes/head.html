@@ -3,6 +3,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  {% if site.favicon %}
+    {% if site.favicon.type %}
+      <link rel="icon" type="{{ site.favicon.type }}" href="{{ site.favicon.href }}">
+    {% else if site.favicon.href %}
+      <link rel="icon" href="{{ site.favicon.href }}">
+    {% else %}
+      <link rel="icon" href="{{ site.favicon }}">
+    {% endif %}
+  {% endif %}
+
   {% if site.plugins contains 'jekyll-seo-tag' or site.gems contains 'jekyll-seo-tag' %}
     {% comment %}
       Add metadata for search engines and social networks if jekyll-seo-tag plugin is enabled
